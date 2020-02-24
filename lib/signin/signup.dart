@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:furniturestreet/main.dart';
 import 'package:furniturestreet/shared/style.dart';
 import 'package:http/http.dart' as http;
+import '../services/googleSignIn.dart';
 
 class Signup extends StatefulWidget {
   @override
@@ -113,11 +114,13 @@ class _SignupState extends State<Signup> with TickerProviderStateMixin {
               color: Colors.white,
               height: 50,
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Homepage()),
-                );
-              },
+                GoogleAuth().signInWithGoogle().whenComplete((){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Homepage()),
+                  );
+                });
+                },
               elevation: 10.0,
               minWidth: MediaQuery.of(context).size.width - 50,
               child: Row(
