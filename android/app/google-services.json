@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "236261368717",
+    "firebase_url": "https://furniture-street.firebaseio.com",
+    "project_id": "furniture-street",
+    "storage_bucket": "furniture-street.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:236261368717:android:534052ec4e524389acd3c4",
+        "android_client_info": {
+          "package_name": "com.appnics.furniturestreet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "236261368717-1horb8cg3386bs4r25oq7bft5hskn1a9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.appnics.furniturestreet",
+            "certificate_hash": "9b637bf2399c0dd7a89774d50d27d8eba9866852"
+          }
+        },
+        {
+          "client_id": "236261368717-nn6klauhl1r0tub4btvp907qh65og5nv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrsQR8FpZs9V9kpQHqI3JwzVyGir7JUQk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "236261368717-nn6klauhl1r0tub4btvp907qh65og5nv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
