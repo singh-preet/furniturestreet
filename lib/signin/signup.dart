@@ -19,10 +19,8 @@ class _SignupState extends State<Signup> with TickerProviderStateMixin {
   Map data;
   Future getLoginData() async{
     http.Response response= await http.post('https://furniturestreet.in/MobileApi/users/login');
-
-
-    
   }
+
   Widget signInForm() {
     return Form(
       child: Column(
@@ -114,7 +112,7 @@ class _SignupState extends State<Signup> with TickerProviderStateMixin {
               color: Colors.white,
               height: 50,
               onPressed: () {
-                LogInGoogle().signInWithGoogle().whenComplete((){
+                SignIn().handleSignIn().whenComplete((){
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => Homepage()),

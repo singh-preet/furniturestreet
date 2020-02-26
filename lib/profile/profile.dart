@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:furniturestreet/profile/webviewpage.dart';
+import 'package:furniturestreet/services/logInGoogle.dart';
+import 'package:furniturestreet/signin/signup.dart';
 import '../shared/style.dart';
 import 'address.dart';
 
@@ -76,9 +78,10 @@ class _ProfileState extends State<Profile> {
                       onPressed: () {
                         if (this.mounted) {
                           setState(() {
-//                          user = null;
-//                          auth.signOut();
-//                          googleSignIn.signOut();
+                            SignIn().handleSignOut().whenComplete((){
+                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Signup()));
+                            });
+
                           });
 //                      }
 //                      Navigator.push(
