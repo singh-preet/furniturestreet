@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class SearchBar extends SearchDelegate<String> {
@@ -39,7 +40,7 @@ class SearchBar extends SearchDelegate<String> {
           return Padding(
             padding: const EdgeInsets.symmetric(vertical: 3.0),
             child: ListTile(
-              leading: Image.network('https://images.unsplash.com/photo-1544457070-4cd773b4d71e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
+              leading: CachedNetworkImage(imageUrl:'https://images.unsplash.com/photo-1544457070-4cd773b4d71e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
                 width: 50,
                 height: 60,
                 fit: BoxFit.cover,
@@ -66,7 +67,7 @@ class SearchBar extends SearchDelegate<String> {
           return Padding(
             padding: const EdgeInsets.symmetric(vertical: 3.0),
             child: ListTile(
-              leading: Image.network(
+              leading: CachedNetworkImage(imageUrl:
             'https://images.unsplash.com/photo-1544457070-4cd773b4d71e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
                 width: 50,
                 height: 60,

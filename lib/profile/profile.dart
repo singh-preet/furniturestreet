@@ -98,14 +98,14 @@ class _ProfileState extends State<Profile> {
                       height: 100,
                       width: 100,
                       color: Colors.grey,
-//                      child: Image.network(
+//                      child: CachedNetworkImage(imageUrl:(
 //                        'https://images.unsplash.com/photo-1554780336-390462301acf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80',
 //                        fit: BoxFit.cover,
 //                      )
 //                      child: user.photoUrl == null
 //                          ? Image.asset(
 //                          'assets/user_placeholder.jpeg')
-//                          : Image.network(user.photoUrl)
+//                          : CachedNetworkImage(imageUrl:(user.photoUrl)
                       ),
                 )
               ],

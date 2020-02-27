@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:furniturestreet/shared/category.dart';
@@ -13,14 +14,25 @@ class Shop extends StatefulWidget {
 }
 
 class _ShopState extends State<Shop> {
-  Map data = {};
+  Map data ;
+  List categoryList;
+  List bannerList;
+  List offerList;
+  List rentProductsList;
   Future getData() async {
     var url = 'https://furniturestreet.in/MobileApi/home';
     http.Response response = await http.post(url, body: {'loc_id': '1'});
     setState(() {
       data = json.decode(response.body);
-      print(data['data'][0]['categoriers'][1]['category_name']);
+      categoryList=data['data'][0]['categories'];
+      bannerList=data['data'][0]['banners'];
+      offerList=data['data'][0]['offers'];
+      rentProductsList=data['data'][0]['rent_products'];
+
+//
+//      print(data['data'][0]['categories'][1]['category_name']);
     });
+//    print(data);
   }
 
   @override
@@ -31,8 +43,10 @@ class _ShopState extends State<Shop> {
 
   @override
   Widget build(BuildContext context) {
-    return data != null && data.isNotEmpty
-        ? ListView(
+    return
+//      data != null && data.isNotEmpty
+//        ?
+    ListView(
             children: <Widget>[
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -127,7 +141,7 @@ class _ShopState extends State<Shop> {
                 child: GridView.builder(
                     shrinkWrap: true,
                     itemCount: data != null && data.isNotEmpty
-                        ? data['data'][0]['categoriers'].length
+                        ? categoryList.length
                         : 8,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 4),
@@ -137,15 +151,15 @@ class _ShopState extends State<Shop> {
                               padding: const EdgeInsets.all(1.0),
                               child: GestureDetector(
                                 onTap: () {
-                                  print(data['data'][0]['categoriers'][index]
+                                  print(categoryList[index]
                                       ['category_id']);
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) => Category(
-                                        name: data['data'][0]['categoriers']
+                                        name: categoryList
                                             [index]['category_name'],
-                                        catId: data['data'][0]['categoriers']
+                                        catId: categoryList
                                             [index]['category_id'],
                                       ),
                                     ),
@@ -157,13 +171,13 @@ class _ShopState extends State<Shop> {
                                   width: 130,
                                   child: Column(
                                     children: <Widget>[
-                                      Image.network(
-                                        data['data'][0]['categoriers'][index]
+                                      CachedNetworkImage(imageUrl:
+                                        categoryList[index]
                                             ['image_url'],
                                         height: 60,
                                         width: 80,
                                       ),
-                                      Text(data['data'][0]['categoriers'][index]
+                                      Text(categoryList[index]
                                           ['category_name']),
                                     ],
                                   ),
@@ -204,7 +218,7 @@ class _ShopState extends State<Shop> {
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: data != null && data.isNotEmpty
-                      ? data['data'][0]['offers'].length
+                      ? offerList.length
                       : 3,
                   itemBuilder: (context, index) {
                     return data != null && data.isNotEmpty
@@ -213,8 +227,8 @@ class _ShopState extends State<Shop> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(10),
                               child: Container(
-                                child: Image.network(
-                                  data['data'][0]['offers'][index]['image_url'],
+                                child: CachedNetworkImage(imageUrl:
+                                  offerList[index]['image_url'],
                                 ),
                               ),
                             ),
@@ -254,7 +268,7 @@ class _ShopState extends State<Shop> {
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: data != null && data.isNotEmpty
-                      ? data['data'][0]['banners'].length
+                      ? bannerList.length
                       : 3,
                   itemBuilder: (context, index) {
                     return data != null && data.isNotEmpty
@@ -273,8 +287,8 @@ class _ShopState extends State<Shop> {
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
                                       vertical: 0.0, horizontal: 10),
-                                  child: Image.network(
-                                    data['data'][0]['banners'][index]
+                                  child: CachedNetworkImage(imageUrl:
+                                    bannerList[index]
                                         ['image_url'],
                                     fit: BoxFit.fill,
                                   ),
@@ -323,7 +337,7 @@ class _ShopState extends State<Shop> {
                                       MaterialPageRoute(
                                           builder: (context) => Category(
                                                 name: data['data'][0]
-                                                        ['categoriers'][index]
+                                                        ['categories'][index]
                                                     ['category_name'],
                                               )));
                                 },
@@ -333,8 +347,8 @@ class _ShopState extends State<Shop> {
                                     color: primary.withOpacity(0.1),
                                     height: 80,
                                     width: 130,
-                                    child: Image.network(
-                                      data['data'][0]['rent_products'][index]
+                                    child: CachedNetworkImage(imageUrl:
+                                      rentProductsList[index]
                                           ['product_image'],
                                       fit: BoxFit.fill,
                                     ),
@@ -349,10 +363,10 @@ class _ShopState extends State<Shop> {
                     }),
               ),
             ],
-          )
-        : Center(
-            child: CircularProgressIndicator(
-            valueColor: AlwaysStoppedAnimation<Color>(primary),
-          ));
+          );
+//        : Center(
+//            child: CircularProgressIndicator(
+//            valueColor: AlwaysStoppedAnimation<Color>(primary),
+//          ));
   }
 }

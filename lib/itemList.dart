@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:furniturestreet/shared/style.dart';
 import 'shared/item.dart';
@@ -77,7 +78,7 @@ class _TestState extends State<Test> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: <Widget>[
-                                    Image.network(
+                                    CachedNetworkImage(imageUrl:
                                       widget.dataList[index]['product_image'],
                                       fit: BoxFit.fill,
                                     ),

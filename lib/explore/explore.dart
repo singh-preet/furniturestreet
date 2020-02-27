@@ -5,7 +5,6 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class Explore extends StatefulWidget {
-  Explore();
   @override
   _ExploreState createState() => _ExploreState();
 }

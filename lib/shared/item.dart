@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:furniturestreet/shared/style.dart';
 import 'package:http/http.dart' as http;
@@ -50,7 +51,7 @@ class _ItemState extends State<Item> {
             body: ListView(
                     children: <Widget>[
                       Container(
-                        child: Image.network(
+                        child: CachedNetworkImage(imageUrl:
                           data['products'][0]['product_image'][image]['image'],
                           fit: BoxFit.fill,
                         ),
@@ -74,7 +75,7 @@ class _ItemState extends State<Item> {
                                   },
                                   child: Container(
                                     width: 80,
-                                    child: Image.network(
+                                    child: CachedNetworkImage(imageUrl:
                                       data['products'][0]['product_image']
                                           [index]['image'],
                                     ),

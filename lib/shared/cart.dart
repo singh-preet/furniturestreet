@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:furniturestreet/shared/style.dart';
 
@@ -85,7 +86,7 @@ class _CartState extends State<Cart> {
                               child: Container(
                                 color: primary.withOpacity(0.5),
                                 height: 150,
-                                child: Image.network(
+                                child: CachedNetworkImage(imageUrl:
                                   cartList[index]['image'],
                                   fit: BoxFit.cover,
                                 ),

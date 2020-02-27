@@ -27,16 +27,22 @@ dependencies:
   flutter_razorpay_sdk: ^0.1.4
   firebase_auth: ^0.15.4
   google_sign_in: ^4.1.4
+  cached_network_image:
+  hive: ^1.4.1+1
+  hive_flutter: ^0.3.0+2
+  path_provider:
 
 dev_dependencies:
+  hive_generator: ^0.7.0+2
+  build_runner: ^1.7.4
   flutter_test:
     sdk: flutter
-  flutter_launcher_icons: ^0.7.4
 
 flutter_icons:
   android: "launcher_icon"
   ios: true
   image_path: "icons/icon.png"
+
 
 flutter:
 
